@@ -2,7 +2,7 @@
 #include "DoubleBasePalindromes.h"
 
 int main() {
-    std::cout << "Suma wszystkich podwójnych palindromów liczbowych mniejszych od miliona to: " << DoubleBasePalindromes(1000000);
+    std::cout << "The sum of all double base number palindromes smaller than a million is: " << DoubleBasePalindromes(1000000);
 
     return 0;
 }

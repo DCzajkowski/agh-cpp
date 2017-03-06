@@ -2,16 +2,16 @@
 #include "Palindrome.h"
 
 int main() {
-    if (is_palindrome("kajak")) {
-        std::cout << "'Kajak' jest palindromem" << std::endl;
+    if (is_palindrome("LOL")) {
+        std::cout << "'LOL' is a palindrome" << std::endl;
     } else {
-        std::cout << "'Kajak' nie jest palindromem" << std::endl;
+        std::cout << "'LOL' is not a palindrome" << std::endl;
     }
 
-    if (is_palindrome("Hejka")) {
-        std::cout << "'Hejka' jest palindromem" << std::endl;
+    if (is_palindrome("Hello")) {
+        std::cout << "'Hello' is a palindrome" << std::endl;
     } else {
-        std::cout << "'Hejka' nie jest palindromem" << std::endl;
+        std::cout << "'Hello' is not a palindrome" << std::endl;
     }
 
     return 0;
