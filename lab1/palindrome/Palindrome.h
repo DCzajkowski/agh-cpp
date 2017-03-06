@@ -9,4 +9,4 @@
 
 bool is_palindrome(std::string str);
 
-#endif //JIMP_EXERCISES_FACTORIAL_H
+#endif
