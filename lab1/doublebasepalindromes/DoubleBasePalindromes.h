@@ -7,6 +7,6 @@
 
 #include <cstdint>
 
-uint64_t DoubleBasePalindromes(int max_value_exculsive);
+uint64_t DoubleBasePalindromes(int max_value_exclusive);
 
 #endif
