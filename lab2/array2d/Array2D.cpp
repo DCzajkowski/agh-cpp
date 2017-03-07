@@ -35,7 +35,7 @@ void DeleteArray2D(int ** array, int n_rows, int n_columns) {
     delete [] array;
 }
 
-void FillArray2D(int k_rows, int k_cols, int *to_fill[]) {
+void FillArray2D(int k_rows, int k_cols, int * to_fill[]) {
     int n = 1;
     for (int i = 0; i < k_rows; i++) {
         for (int j = 0; j < k_cols; j++) {
