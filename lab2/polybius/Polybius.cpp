@@ -19,8 +19,6 @@ const map<char, string> polybius_square = {
 };
 
 string PolybiusCrypt(string message) {
-    if (message == "") return "";
-
     string output = "";
 
     for (int i = 0; i < message.length(); i++) {
@@ -37,8 +35,6 @@ string PolybiusCrypt(string message) {
 }
 
 string PolybiusDecrypt(string crypted) {
-    if (crypted == "") return "";
-
     string output = "";
 
     for (int i = 0; i < crypted.length(); i += 2) {

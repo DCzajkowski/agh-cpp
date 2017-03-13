@@ -10,35 +10,32 @@
 using namespace std;
 
 int main(int argc, char const *argv[]) {
+    // Input file name
     string input = argv[1];
+    // Output file name
     string output = argv[2];
+    // Mode
     int encrypt = atoi(argv[3]);
 
-    string input_contents = "";
-
+    // Input file
     ifstream input_file(input);
-    if (input_file.is_open()) {
-        string contents((istreambuf_iterator<char>(input_file)), istreambuf_iterator<char>());
-        input_contents = contents.c_str();
 
-        input_file.close();
-    } else {
+    // If file cannot be open, flash an error
+    if (!input_file.is_open()) {
         cout << "We were unable to open the file provided.";
         exit(1);
     }
 
+    // Get input file contents
+    string contents((istreambuf_iterator<char>(input_file)), istreambuf_iterator<char>());
+    string input_contents = contents.c_str();
 
-    string output_contents = "";
+    input_file.close();
 
-    if (encrypt) {
-        output_contents = PolybiusCrypt(input_contents);
-    } else {
-        output_contents = PolybiusDecrypt(input_contents);
-    }
-
+    // Open the output file and insert contents
     ofstream output_file;
     output_file.open(output);
-    output_file << output_contents;
+    output_file << ((encrypt) ? PolybiusCrypt(input_contents) : PolybiusDecrypt(input_contents));
     output_file.close();
 
     return 0;
