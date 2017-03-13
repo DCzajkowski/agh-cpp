@@ -26,11 +26,11 @@ string XorCypherBreaker(
     // A global (in current scope) counter that holds a number of occurrences of currently most probable password
     int counter = 0;
 
-    // Go through each lowercase letter in the alphabet for each letter in the being guessed password
+    // Go through each lowercase letter in the alphabet, for each letter in the being-guessed password
     for (int i = 0; i < ALPHABET_SIZE; i++) {
         for (int j = 0; j < ALPHABET_SIZE; j++) {
             for (int k = 0; k < ALPHABET_SIZE; k++) {
-                // Get track of the number of occurrences of currently being guessed password
+                // Get track of the number of occurrences of currently being-guessed password
                 int occurrences = 0;
 
                 // Set each password's letter to the ASCII code of the loop
@@ -58,7 +58,7 @@ string XorCypherBreaker(
                     }
                 }
 
-                // If occurrences of currently generated password is greater than the password
+                // If occurrences of currently generated password are greater than the password
                 // having currently biggest possibility, then put it in place as a more
                 // probable to be the correct password and reset the counter to the
                 // current password's occurrences number
