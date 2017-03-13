@@ -3,6 +3,8 @@
 //
 
 int main() {
+    // No main() contents as they were not required
+    // for this exercise
 
     return 0;
 }
