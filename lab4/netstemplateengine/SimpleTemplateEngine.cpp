@@ -20,17 +20,8 @@ string View::Render(const unordered_map <string, string> &model) const {
     string _view = view;
 
     for (const auto & replacement : model) {
-        size_t index = 0;
-        while (true) {
-            string key = "{{" + replacement.first + "}}";
-
-            index = _view.find(key, index);
-            if (index == string::npos) break;
-
-            _view.replace(index, key.size(), replacement.second);
-
-            index += key.size();
-        }
+        regex r ("/{{" + replacement.first + "}}/");
+        _view = regex_replace(_view, r, replacement.second);
     }
 
     regex r ("/{{\\w+}}/");
