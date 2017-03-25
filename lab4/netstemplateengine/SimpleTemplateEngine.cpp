@@ -4,13 +4,11 @@
 
 #include "SimpleTemplateEngine.h"
 #include <iostream>
-#include <regex>
+#include <boost/xpressive/xpressive.hpp>
 
 using nets::View;
-using std::cout;
-using std::endl;
-using std::regex_replace;
-using std::regex;
+
+using namespace boost::xpressive;
 
 View::View(string _view) {
     view = _view;
@@ -20,11 +18,11 @@ string View::Render(const unordered_map <string, string> &model) const {
     string _view = view;
 
     for (const auto & replacement : model) {
-        regex r ("/{{" + replacement.first + "}}/");
+        sregex r = sregex::compile("\\{\\{" + replacement.first + "\\}\\}");
         _view = regex_replace(_view, r, replacement.second);
     }
 
-    regex r ("/{{\\w+}}/");
+    sregex r = sregex::compile("\\{\\{\\w+\\}\\}");
     _view = regex_replace(_view, r, "");
 
     return _view;
