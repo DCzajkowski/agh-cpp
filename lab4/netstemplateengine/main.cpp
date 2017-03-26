@@ -22,5 +22,13 @@ int main() {
 
     cout << view3.Render({{"test", "{{test2}}"}, {"test2", "{{test}}"}});
 
+    nets::View view4{"Not found {{test2}} {{test}} {{test2}} {{test}}!"};
+
+    cout << view4.Render({{"test2", " :O"}, {"test", " lol "}});
+
+    nets::View view5{"{{template_with_underscore}}<=>{{template_with_underscore_missing}}"};
+
+    cout << view5.Render({{"template_with_underscore", "replacement"}});
+
     return 0;
 }

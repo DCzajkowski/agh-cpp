@@ -19,20 +19,33 @@ View::View(string _view) {
 string View::Render(const unordered_map <string, string> &model) const {
     string _view = view;
 
-    for (const auto & replacement : model) {
-        std::regex pattern("\\{\\{" + replacement.first + "\\}\\}");
+    std::regex pattern("\\{\\{\\w+\\}\\}");
 
-        auto words_begin = std::sregex_iterator(_view.begin(), _view.end(), pattern);
-        auto words_end = std::sregex_iterator();
+    auto words_begin = std::sregex_iterator(_view.begin(), _view.end(), pattern);
+    auto words_end = std::sregex_iterator();
 
+    for (std::sregex_iterator i = words_begin; i != words_end; ++i) {
+        bool replaced = false;
+        std::cout << std::endl << std::endl << "|" << i->str() << "|" << std::endl;
+        for (const auto & replacement : model) {
+            if ("{{" + replacement.first + "}}" == i->str()) {
+                std::cout << "1. " << _view << std::endl;
+                _view.replace(i->position(), i->str().size(), replacement.second);
+                std::cout << "2. " << _view << std::endl;
 
-        for (std::sregex_iterator i = words_begin; i != words_end; i++) {
-            _view.replace(i->position(), i->str().size(), replacement.second);
+                replaced = true;
+//                break;
+            }
+        }
+
+        std::cout << "swapped?: " << replaced << std::endl;
+
+        if (!replaced) {
+            _view.replace(i->position(), i->str().size(), "");
         }
     }
 
-    // sregex r = sregex::compile("\\{\\{\\w+\\}\\}");
-    // _view = regex_replace(_view, r, "");
+//    _view = regex_replace(_view, pattern, "");
 
     return _view;
 }
