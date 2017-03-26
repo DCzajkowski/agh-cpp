@@ -18,15 +18,21 @@ using std::experimental::optional;
 namespace nets {
     class JsonValue {
         protected:
-            map<string, JsonValue> object_map;
+            optional<map<string, JsonValue>> m;
+            optional<double> d;
+            optional<int> i;
+            optional<bool> b;
+            optional<string> s;
+            optional<vector<JsonValue>> v;
 
         public:
-            JsonValue(map<string, JsonValue> _object_map);
-            JsonValue(double value);
-            JsonValue(int value);
-            JsonValue(string value);
-            JsonValue(vector<JsonValue> value);
-        
+            JsonValue(map<string, JsonValue> _value);
+            JsonValue(double _value);
+            JsonValue(int _value);
+            JsonValue(bool _value);
+            JsonValue(string _value);
+            JsonValue(vector<JsonValue> _value);
+
             optional<JsonValue> ValueByName(const string &name) const;
             string ToString() const;
     };
