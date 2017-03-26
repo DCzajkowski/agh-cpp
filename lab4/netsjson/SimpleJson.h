@@ -8,9 +8,11 @@
 #include <experimental/optional>
 #include <string>
 #include <map>
+#include <vector>
 
 using std::string;
 using std::map;
+using std::vector;
 using std::experimental::optional;
 
 namespace nets {
@@ -20,6 +22,11 @@ namespace nets {
 
         public:
             JsonValue(map<string, JsonValue> _object_map);
+            JsonValue(double value);
+            JsonValue(int value);
+            JsonValue(string value);
+            JsonValue(vector<JsonValue> value);
+        
             optional<JsonValue> ValueByName(const string &name) const;
             string ToString() const;
     };
