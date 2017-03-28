@@ -15,7 +15,7 @@ int8_t * MemoryChunk::MemoryAt(size_t offset) const {
 }
 
 size_t MemoryChunk::ChunkSize() const {
-    return (pointer != nullptr) ? sizeof(*pointer) : 0;
+    return (pointer == nullptr) ? 0 : sizeof(pointer);
 }
 
 MemoryChunk::~MemoryChunk() {
